@@ -150,4 +150,8 @@ EMAIL_HOST_PASSWORD = '5d4ae8c33a72bc'
 EMAIL_USE_TLS = True
 
 
+try:
+    from .local_settings import *
+except ImportError:
+    pass
 
