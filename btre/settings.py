@@ -143,12 +143,6 @@ MESSAGE_TAGS = {
 
 }
 
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_PORT = 2525
-EMAIL_HOST_USER = 'fa207d26f0e08d'
-EMAIL_HOST_PASSWORD = '5d4ae8c33a72bc'
-EMAIL_USE_TLS = True
-
 
 try:
     from .local_settings import *
