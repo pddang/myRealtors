@@ -25,7 +25,7 @@ SECRET_KEY = 'n_@%nikbqa5&xqf!i=g@fn5tei7sf7za=l8+jzrnsrzd_qu791'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['sheltered-cliffs-62063.herokuapp.com']
+ALLOWED_HOSTS = ['']
 
 
 # Application definition
@@ -83,17 +83,12 @@ WSGI_APPLICATION = 'btre.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'btredb',
-        'USER': 'postgres',
-        'PASSWORD': '2911',
-        'HOST': 'localhost'
+        'NAME': 'myRealtors',
+        'USER': 'dbadmin',
+        'PASSWORD': '',
+        'HOST': 'ec2-34-204-22-76.compute-1.amazonaws.com'
     }
 }
-
-import dj_database_url
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
-
 
 
 
@@ -153,8 +148,8 @@ MESSAGE_TAGS = {
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 
-# try:
-#     from .local_settings import *
-# except ImportError:
-#     pass
-#
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
