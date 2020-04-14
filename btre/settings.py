@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'n_@%nikbqa5&xqf!i=g@fn5tei7sf7za=l8+jzrnsrzd_qu791'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sheltered-cliffs-62063.herokuapp.com']
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -88,6 +89,12 @@ DATABASES = {
         'HOST': 'localhost'
     }
 }
+
+import dj_database_url
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
+
+
 
 
 # Password validation
@@ -143,9 +150,11 @@ MESSAGE_TAGS = {
 
 }
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
 
+# try:
+#     from .local_settings import *
+# except ImportError:
+#     pass
+#
